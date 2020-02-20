@@ -6,15 +6,21 @@
   $lenguajes = [
       [
           'titulo' => 'php',
-          'descripcion' => 'Es un leguaje muy divertido y a la vez facil de aprender'
+          'descripcion' => 'Es un leguaje muy divertido y a la vez facil de aprender',
+          'visible' => true,
+          'meses' => 8
       ],
       [
           'titulo' => 'java',
-          'descripcion' => 'Este lenguaje es un dolor de cabez'
+          'descripcion' => 'Este lenguaje es un dolor de cabez',
+          'visible' => true,
+          'meses' => 2
       ],
       [
           'titulo' => 'ruby',
-          'descripcion' => 'Este lenguaje no lo conozco'
+          'descripcion' => 'Este lenguaje no lo conozco',
+          'visible' => true,
+          'meses' => 5
       ]
     ];
 
@@ -79,20 +85,30 @@
           <ul>
           <?php
             $idx = 0;
-            do{
-              echo '<li class="work-position">';
-              echo '<h5>'. $lenguajes[$idx]['titulo']. '</h5>';
-              echo '<p>'.  $lenguajes[$idx]['descripcion'] .'</p>';
-              echo '<strong>Achievements:</strong>';
-              echo '<ul>';
-                echo '<li>Lorem ipsum dolor sit amet, 80% consectetuer adipiscing elit.</li>';
-                echo '<li>Lorem ipsum dolor sit amet, 80% consectetuer adipiscing elit.</li>';
-                echo '<li>Lorem ipsum dolor sit amet, 80% consectetuer adipiscing elit.</li>';
-              echo '</ul>';
-            echo '</li>';
-              $idx = $idx + 1;
+            $totalMeses = 0;
+            for($idx = 0; $idx < count($lenguajes); $idx ++){
+              $totalMeses = $totalMeses + $lenguajes[$idx]['meses'];
+              if($totalMeses > 12){
+              break;
+              }
 
-            } while($idx < 3);
+              if($lenguajes[$idx]['visible'] == false){
+                continue;
+              }
+
+              
+                echo '<li class="work-position">';
+                echo '<h5>'. $lenguajes[$idx]['titulo']. '</h5>';
+                echo '<h4>'.$totalMeses.'</h4>';
+                echo '<p>'.  $lenguajes[$idx]['descripcion'] .'</p>';
+                echo '<strong>Achievements:</strong>';
+                echo '<ul>';
+                  echo '<li>Lorem ipsum dolor sit amet, 80% consectetuer adipiscing elit.</li>';
+                  echo '<li>Lorem ipsum dolor sit amet, 80% consectetuer adipiscing elit.</li>';
+                  echo '<li>Lorem ipsum dolor sit amet, 80% consectetuer adipiscing elit.</li>';
+                echo '</ul>';
+              echo '</li>';
+            } 
             ?>
           </ul>
         </div>
